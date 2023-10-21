@@ -1,3 +1,5 @@
+import { Link } from "../Link";
+
 type ClickAction = {
     label: string;
     onClick: () => void;
@@ -18,7 +20,9 @@ export default function Actions({ actions }: { actions: Action[] }) {
             return <button key={index} className="btn btn-primary" role="button" onClick={clickAction.onClick}>{clickAction.label}</button>
         } else {
             const linkAction = action as LinkAction;
-            return <a key={index} className="btn btn-primary" target="_blank" href={linkAction.href}>{linkAction.label}</a>
+            return <Link key={index} className="btn btn-primary" href={linkAction.href} >
+                {linkAction.label}
+            </Link>
         }
     });
 }
